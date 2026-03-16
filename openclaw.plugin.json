@@ -1,0 +1,41 @@
+{
+  "id": "searxng-search",
+  "name": "SearXNG Web Search",
+  "description": "Self-hosted SearXNG-powered web_search tool for agents",
+  "version": "0.1.0",
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "searxngUrl": {
+        "type": "string",
+        "description": "Base URL of the SearXNG instance",
+        "default": "http://localhost:8080"
+      },
+      "engines": {
+        "type": "array",
+        "items": { "type": "string" },
+        "description": "Search engines to use",
+        "default": ["duckduckgo", "brave", "grokipedia", "wikipedia", "github"]
+      },
+      "timeout": {
+        "type": "number",
+        "description": "Request timeout in milliseconds",
+        "default": 10000
+      }
+    }
+  },
+  "uiHints": {
+    "searxngUrl": {
+      "label": "SearXNG URL",
+      "placeholder": "http://localhost:8080"
+    },
+    "engines": {
+      "label": "Search Engines"
+    },
+    "timeout": {
+      "label": "Timeout (ms)",
+      "placeholder": "10000"
+    }
+  }
+}
