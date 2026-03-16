@@ -1,0 +1,40 @@
+{
+  "name": "@drawliin/searxng-search",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "OpenClaw plugin: self-hosted SearXNG web search tool for agents",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "docker",
+    "README.md",
+    "openclaw.plugin.json"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.5.0"
+  },
+  "peerDependencies": {
+    "clawdbot": ">=2026.1.17-1"
+  },
+  "peerDependenciesMeta": {
+    "clawdbot": {
+      "optional": true
+    }
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "openclaw": {
+    "extensions": ["./dist/index.js"]
+  }
+}
