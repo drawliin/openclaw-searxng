@@ -11,6 +11,9 @@ export const DEFAULT_TIMEOUT = 10_000;
 export const DEFAULT_COUNT = 5;
 export const MAX_COUNT = 10;
 
+export const DEFAULT_PROVIDER: 'searxng' | 'tavily' = 'searxng';
+export const TAVILY_DEFAULT_MAX_RESULTS = 5;
+
 export const FRESHNESS_MAP: Record<string, string> = {
   pd: 'day',
   pw: 'week',
