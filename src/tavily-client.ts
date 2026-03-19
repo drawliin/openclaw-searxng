@@ -7,15 +7,14 @@ import {
   DEFAULT_COUNT,
   FRESHNESS_MAP,
   MAX_COUNT,
-  TAVILY_DEFAULT_MAX_RESULTS,
 } from './constants.js';
 import type { SearchResultItem } from './types.js';
 
 export class TavilyClient {
-  private readonly apiKey: string;
+  private readonly client: ReturnType<typeof tavily>;
 
   constructor(apiKey: string) {
-    this.apiKey = apiKey;
+    this.client = tavily({ apiKey });
   }
 
   async search(
@@ -26,7 +25,7 @@ export class TavilyClient {
       language?: string;
       freshness?: string;
     },
-  ): Promise<{ results: SearchResultItem[]; tookMs: number }> {
+  ): Promise<{ results: SearchResultItem[]; tookMs: number; warnings?: string[] }> {
     const count = Math.max(
       1,
       Math.min(MAX_COUNT, opts?.count ?? DEFAULT_COUNT),
@@ -45,9 +44,19 @@ export class TavilyClient {
       }
     }
 
+    if (opts?.country) {
+      searchOpts.country = opts.country;
+    }
+
+    const warnings: string[] = [];
+    if (opts?.language) {
+      warnings.push(
+        `The 'language' parameter is not supported by the Tavily provider and was ignored.`,
+      );
+    }
+
     const start = Date.now();
-    const client = tavily({ apiKey: this.apiKey });
-    const response = await client.search(query, searchOpts);
+    const response = await this.client.search(query, searchOpts);
     const tookMs = Date.now() - start;
 
     const results: SearchResultItem[] = (response.results ?? [])
@@ -59,7 +68,7 @@ export class TavilyClient {
         siteName: extractHostname(result.url),
       }));
 
-    return { results, tookMs };
+    return { results, tookMs, ...(warnings.length > 0 ? { warnings } : {}) };
   }
 }
 

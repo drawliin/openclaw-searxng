@@ -1,6 +1,6 @@
 {
   "name": "@drawliin/searxng-search",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "description": "OpenClaw plugin: self-hosted SearXNG web search tool for agents",
   "main": "dist/index.js",
@@ -19,7 +19,7 @@
     "dev": "tsc --watch"
   },
   "dependencies": {
-    "@tavily/core": "^0.0.2"
+    "@tavily/core": "^0.7.0"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
