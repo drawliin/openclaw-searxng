@@ -56,7 +56,7 @@ export interface SearchResultItem {
 
 export interface SearchToolOutput {
   query: string;
-  provider: 'searxng';
+  provider: 'searxng' | 'tavily';
   count: number;
   tookMs: number;
   results: SearchResultItem[];
@@ -66,4 +66,9 @@ export interface SearchToolOutput {
 export interface SearchToolError {
   error: string;
   message: string;
+}
+
+export interface TavilyPluginConfig {
+  tavilyApiKey?: string;
+  provider?: 'searxng' | 'tavily';
 }
