@@ -22,6 +22,16 @@
         "type": "number",
         "description": "Request timeout in milliseconds",
         "default": 10000
+      },
+      "tavilyApiKey": {
+        "type": "string",
+        "description": "Tavily API key. Falls back to TAVILY_API_KEY env var if not set."
+      },
+      "searchProvider": {
+        "type": "string",
+        "enum": ["searxng", "tavily", "both"],
+        "description": "Which search provider(s) to register. Defaults to 'searxng'.",
+        "default": "searxng"
       }
     }
   },
@@ -36,6 +46,14 @@
     "timeout": {
       "label": "Timeout (ms)",
       "placeholder": "10000"
+    },
+    "tavilyApiKey": {
+      "label": "Tavily API Key",
+      "placeholder": "tvly-..."
+    },
+    "searchProvider": {
+      "label": "Search Provider",
+      "placeholder": "searxng"
     }
   }
 }

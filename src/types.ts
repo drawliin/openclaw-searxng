@@ -2,10 +2,14 @@
  * SearXNG Search plugin type definitions.
  */
 
+export type SearchProvider = 'searxng' | 'tavily' | 'both';
+
 export interface SearxngPluginConfig {
   searxngUrl?: string;
   engines?: string[];
   timeout?: number;
+  tavilyApiKey?: string;
+  searchProvider?: SearchProvider;
 }
 
 export interface SearxngResult {
@@ -56,7 +60,7 @@ export interface SearchResultItem {
 
 export interface SearchToolOutput {
   query: string;
-  provider: 'searxng';
+  provider: 'searxng' | 'tavily';
   count: number;
   tookMs: number;
   results: SearchResultItem[];
