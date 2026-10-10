@@ -16,7 +16,8 @@
   ],
   "scripts": {
     "build": "tsc",
-    "dev": "tsc --watch"
+    "dev": "tsc --watch",
+    "test": "npm run build && node --test test/*.test.mjs"
   },
   "dependencies": {},
   "devDependencies": {
@@ -35,6 +36,8 @@
     "registry": "https://npm.pkg.github.com"
   },
   "openclaw": {
-    "extensions": ["./dist/index.js"]
+    "extensions": [
+      "./dist/index.js"
+    ]
   }
 }

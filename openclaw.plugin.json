@@ -14,9 +14,17 @@
       },
       "engines": {
         "type": "array",
-        "items": { "type": "string" },
+        "items": {
+          "type": "string"
+        },
         "description": "Search engines to use",
-        "default": ["duckduckgo", "brave", "grokipedia", "wikipedia", "github"]
+        "default": [
+          "duckduckgo",
+          "brave",
+          "grokipedia",
+          "wikipedia",
+          "github"
+        ]
       },
       "timeout": {
         "type": "number",
@@ -36,6 +44,16 @@
     "timeout": {
       "label": "Timeout (ms)",
       "placeholder": "10000"
+    }
+  },
+  "contracts": {
+    "tools": [
+      "web_search"
+    ]
+  },
+  "toolMetadata": {
+    "web_search": {
+      "optional": true
     }
   }
 }
